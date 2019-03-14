@@ -13,14 +13,10 @@ http://api.population.io:80/1.0/countries
 const url = './src/countries.json';
 
 class App extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {
-            items: [],
-            filter: '',
-          };
-    this.filterCountries = this.filterCountries.bind(this);
-    }
+    state = {
+      items: [],
+      filter: '',
+    };
 
     componentWillMount() {
       axios(url)
@@ -35,7 +31,7 @@ class App extends PureComponent {
       })
     }
     
-    filterCountries(e){
+    filterCountries = (e) => {
       this.setState({filter: e.target.value.replace(/^\s+/g, '')})
     }
   
@@ -56,6 +52,7 @@ class App extends PureComponent {
           {filter.length !== 0 && items.map((item, id) => 
             <Country key={id} country={item} />)
           }
+          
         </div>
       )
     }
