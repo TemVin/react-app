@@ -1,13 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import AppRegistration from './pages/AppRegistration';
 
 import "./styles";
 
 class HomePage extends React.Component {
     render () {
-        return <App />
+        return <AppRegistration />
     }
 }
 
