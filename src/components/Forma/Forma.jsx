@@ -14,6 +14,7 @@ const constantFields = [
     type: 'text',
     placeholder: 'Введите имя',
     required: true,
+    feedback: 'Пожалуйста, введите своё имя'
   },
   {
     controlId: 'formBasicLastname',
@@ -22,6 +23,7 @@ const constantFields = [
     type: 'text',
     placeholder: 'Введите фамилию',
     required: true,
+    feedback: 'Пожалуйста, введите свою фамилию'
   },
   {
     controlId: 'formBasicEmail',
@@ -30,6 +32,7 @@ const constantFields = [
     type: 'email',
     placeholder: 'Введите email',
     required: true,
+    feedback: 'Пожалуйста, введите свой адрес почты'
   },
   {
     controlId: 'formBasicPassword',
@@ -38,6 +41,7 @@ const constantFields = [
     type: 'password',
     placeholder: 'Введите password',
     required: true,
+    feedback: 'Пожалуйста, введите свой пароль'
   },
 ];
 
@@ -56,6 +60,7 @@ class Forma extends React.Component {
         return null;
       }
       const currentField = fields[currentFieldIndex];
+
       return (
         <FieldForm
           key={item.controlId}
@@ -63,18 +68,23 @@ class Forma extends React.Component {
           fieldName={currentField.name}
           data={currentField.value}
           handleChangeInput={changeInput}
-          validated={this.props.validated}
+          feedback={item.feedback}
           {...item}
         />
       );
     });
   }
   render() {
+    const { handleAddClick, validated } = this.props;
+
     let fieldsForm = this.createFieldForm();
+
     return (
       <Fragment>
         <Form
-          onSubmit={this.props.handleAddClick}
+          noValidate
+          onSubmit={handleAddClick}
+          validated={validated}
         >
           {fieldsForm}
           <div className = 'center-block'>

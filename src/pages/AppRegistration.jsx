@@ -66,6 +66,8 @@ class AppRegistration extends PureComponent {
     const newObject = {};
 
     event.preventDefault();
+    
+    this.setState({ validated: true });
 
     if (!(this.isEmptyFields())) {
       fields.forEach((item) => {
@@ -79,6 +81,7 @@ class AppRegistration extends PureComponent {
             ...users, newObject,
         ],
         fields: newFields,
+        validated: false,
       });
     }
   }
@@ -87,6 +90,7 @@ class AppRegistration extends PureComponent {
       const {
         fields,
         users,
+        validated,
       } = this.state;
 
       return (
@@ -95,6 +99,7 @@ class AppRegistration extends PureComponent {
             fields={fields}
             changeInput={this.updateInput}
             handleAddClick={this.handleAddClick}
+            validated={validated}
           />
           {users.length !== 0 && (<Blank users={users}/>)}
         </div>

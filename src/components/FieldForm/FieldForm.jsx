@@ -12,7 +12,8 @@ class FieldForm extends React.Component {
         required,
         handleChangeInput,
         fieldName,
-      } = this.props;  
+        feedback,
+      } = this.props;
 
       return (
         <Fragment>
@@ -26,6 +27,7 @@ class FieldForm extends React.Component {
                   required ={required}
                   onChange={handleChangeInput}       
                 />
+                <Form.Control.Feedback type="invalid">{feedback}</Form.Control.Feedback>
             </Form.Group>
         </Fragment>
       );
