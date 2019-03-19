@@ -35,7 +35,7 @@ class AppRegistration extends PureComponent {
     const getNewState = () => (
       fields.map((item) => {
         if (item.name === name) {
-          const newItem = { ...item, value };
+          const newItem = { ...item, value: value.replace(/^\s/g, '') };
           return newItem;
         }
         return item;
@@ -66,7 +66,7 @@ class AppRegistration extends PureComponent {
     const newObject = {};
 
     event.preventDefault();
-    
+
     this.setState({ validated: true });
 
     if (!(this.isEmptyFields())) {
